@@ -20,12 +20,15 @@ head
     |     
     script.
       $(document).ready(function(){
-      $("#advanced_btn").click(function(){
-      $("#advancesearch").show();
-      });
-      $("#start_search_btn").click(function(){
-      $("#searchresult").show();
-      });
+        $("#paper_submission_btn").click(function(){
+          $("#submission_details").show();
+          });
+        $("#start_search_btn").click(function(){
+          $("#searchresult").show();
+          });
+        $("#complete_submit_practice").click(function(){
+          alert("hi");
+          });
       });
   body
     .wrapper.col0
@@ -103,26 +106,37 @@ head
             |         
             input#start_search_btn(type='button', value='Search')
             |         
-            input#advanced_btn(type='button', value='Advanced Search')
+            input#paper_submission_btn(type='button', value='Make Submission')
         |       
-        #advancesearch(data-role='page', style='display: none;')
+        #submission_details(data-role='page', style='display: none;')
           .ui-content(data-role='main')
-            h2 Advanced Search
-            |           
-            ul(data-role='listview')
-              li
-                | Author 
-                input(type='text', size='40')
-              |             
-              li
-                | Article Title 
-                input(type='text', size='40')
-              |             
-              li
-                | Publish Year 
-                input(type='text', size='40')
-              |             
-              input(type='submit', value='Search')
+            h2 Submission Details
+            form(name="add-estimation", method="post")
+              div.input
+                label Why Practice Used
+                textarea#resp( name="resp", rows="6", cols="66" required)
+                | #{respStr}
+              div.input
+                label Who Used Practice
+                textarea#resp( name="resp", rows="2", cols="30" required)
+                | #{respStr}
+              div.input
+                label What Were Used in the Practice
+                textarea#resp( name="resp", rows="6", cols="60" required)
+                | #{respStr}
+              div.input
+                label Where the Practice was Used
+                textarea#resp( name="resp", rows="6", cols="60" required)
+                | #{respStr}
+              div.input
+                label When the Practice was Used
+                textarea#resp( name="resp", rows="6", cols="60" required)
+                | #{respStr}
+              div.input
+                label How the Practice was Used
+                textarea#resp( name="resp", rows="6", cols="60" required)
+                | #{respStr}
+                input#complete_submit_practice(type='submit', value='Search')
           | References
     #searchresult.wrapper.col3(style='display: none;')
       #container
