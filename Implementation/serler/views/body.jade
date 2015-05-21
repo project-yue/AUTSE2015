@@ -106,12 +106,15 @@ head
             |         
             input#start_search_btn(type='button', value='Search')
             |         
-            input#paper_submission_btn(type='button', value='Make Submission')
+            input#paper_submission_btn(type='button', value='Append Evidence')
         |       
         #submission_details(data-role='page', style='display: none;')
           .ui-content(data-role='main')
-            h2 Submission Details
+            h2 Evidence Submission Details
             form(name="add-estimation", method="post")
+              div.input
+                label Practice Name Identifier
+                input(type='text', size='50', placeholder='You must specify the correct practice identifier')
               div.input
                 label Why Practice Used
                 textarea#resp( name="resp", rows="6", cols="66" required)
@@ -136,7 +139,7 @@ head
                 label How the Practice was Used
                 textarea#resp( name="resp", rows="6", cols="60" required)
                 | #{respStr}
-                input#complete_submit_practice(type='submit', value='Search')
+                input#complete_submit_practice(type='submit', value='Submit ')
           | References
     #searchresult.wrapper.col3(style='display: none;')
       #container
