@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html >
-<head>
-<title>SERLER</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<script type="text/javascript" src="layout/scripts/jquery.min.js"></script>
-<script type="text/javascript" src="layout/scripts/jquery.slidepanel.setup.js"></script>
-<script type="text/javascript" src="layout/scripts/jquery.ui.min.js"></script>
-<script type="text/javascript" src="layout/scripts/jquery.tabs.setup.js"></script>
-<script>
-$(document).ready(function(){
-    $("#advanced_btn").click(function(){
-      $("#advancesearch").show();
-    });
-    $("#start_search_btn").click(function(){
-      $("#searchresult").show();
-    });
-});
-</script>
-</head>
+  <head>
+    <title>SERLER</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script type="text/javascript" src="layout/scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="layout/scripts/jquery.slidepanel.setup.js"></script>
+    <script type="text/javascript" src="layout/scripts/jquery.ui.min.js"></script>
+    <script type="text/javascript" src="layout/scripts/jquery.tabs.setup.js"></script>
+    <script>
+      $(document).ready(function(){
+          $("#advanced_btn").click(function(){
+            $("#advancesearch").show();
+          });
+          $("#start_search_btn").click(function(){
+            $("#searchresult").show();
+          });
+      });
+    </script>
+  </head>
 <body>
 <div class="wrapper col0">
   <div id="topbar">
     <div id="slidepanel">
       <div class="topbox">
         <h2>Serler</h2>
-        <p>Hello World</p>
+        <p>Hello World, What we do help you to improve</p>
         <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
       </div>
       <div class="topbox">
@@ -82,13 +82,11 @@ $(document).ready(function(){
 
         <li><a href="online_support.html">Online Support</a></li>
       </ul>
-      
+
     </div>
     <br class="clear" />
   </div>
 </div>
-<!-- ####################################################################################################### -->
-<!-- search bar -->
 <div class="wrapper col3">
   <div id="container">
     <p>Please enter what you are looking for</p>
@@ -103,12 +101,12 @@ $(document).ready(function(){
         <div data-role="main" class="ui-content">
           <h2>Advanced Search</h2>
           <ul data-role="listview">
-            <li>Author <input type="text" size="40"/> </li>
+            <li>Author <input type="text" size="40" /> </li>
             <li>Article Title <input type="text" size="40"/></li>
             <li>Publish Year <input type="text" size="40"/></li>
             <input type="submit" value="Search">
           </ul>
-        </div>
+        </div>References
       </div>
   </div>
 </div>
