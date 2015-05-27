@@ -3,31 +3,29 @@
 doctype html
 head
     title SERLER
-    |     
     meta(http-equiv='Content-Type', content='text/html; charset=iso-8859-1')
-    |     
     link(rel='stylesheet', type="text/css", href='stylesheets/layout.css')
-    |     
     link(rel='stylesheet', href='http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css')
-    |     
     script(language='JavaScript', type='text/javascript', src='javascripts/jquery.min.js')
-    |     
     script(language='JavaScript', type='text/javascript', src='javascripts/jquery.slidepanel.setup.js')
-    |     
     script(language='JavaScript', type='text/javascript', src='javascripts/jquery.ui.min.js')
-    |     
     script(language='JavaScript', type='text/javascript', src='javascripts/jquery.tabs.setup.js')
-    |     
     script.
       $(document).ready(function(){
         $("#paper_submission_btn").click(function(){
-          $("#submission_details").show();
+          var submitEvidenceBtnText = document.getElementById("paper_submission_btn");
+          if(submitEvidenceBtnText.value === 'Append Evidence'){
+            submitEvidenceBtnText.value = 'Cancell Append Evidence';
+          }else{
+            submitEvidenceBtnText.value = 'Append Evidence';
+          }
+          $("#submission_details").toggle();
           });
         $("#start_search_btn").click(function(){
           $("#searchresult").show();
           });
         $("#complete_submit_practice").click(function(){
-          alert("hi");
+          
           });
       });
   body
@@ -36,16 +34,13 @@ head
         #slidepanel
           .topbox
             h2 Serler
-            |         
             p Hello World
-            |         
             p.readmore
               a(href='#') Continue Reading &raquo;
-          |       
           .topbox
             h2 Researcher/Practioner Login
             |         
-            form(action='#', method='post')
+            form(action='/', method='post')
               fieldset
                 legend Teachers Login Form
                 |             
