@@ -113,32 +113,40 @@ head
             h2 Evidence Submission Details
             form(name="add-estimation", method="post")
               div.input
-                label Practice Name Identifier
+                label Practice name identifier
+                br
                 input(type='text', size='50', placeholder='You must specify the correct practice identifier')
               div.input
-                label Why Practice Used
+                label Why practice used
+                br
                 textarea#resp( name="resp", rows="6", cols="66" required)
                 | #{respStr}
               div.input
-                label Who Used Practice
+                label Who used practice
+                br
                 textarea#resp( name="resp", rows="2", cols="30" required)
                 | #{respStr}
               div.input
-                label What Were Used in the Practice
+                label What were used in the practice
+                br
                 textarea#resp( name="resp", rows="6", cols="60" required)
                 | #{respStr}
               div.input
-                label Where the Practice was Used
+                label Where the practice was used
+                br
                 textarea#resp( name="resp", rows="6", cols="60" required)
                 | #{respStr}
               div.input
-                label When the Practice was Used
+                label When the practice was used
+                br
                 textarea#resp( name="resp", rows="6", cols="60" required)
                 | #{respStr}
               div.input
-                label How the Practice was Used
+                label How the practice was used
+                br
                 textarea#resp( name="resp", rows="6", cols="60" required)
                 | #{respStr}
+              div.input
                 input#complete_submit_practice(type='submit', value='Submit ')
           | References
     #searchresult.wrapper.col3(style='display: none;')
