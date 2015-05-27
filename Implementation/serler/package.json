@@ -13,7 +13,7 @@
     "body-parser": "~1.12.0",
     "jade": "~1.9.2",
     "debug": "~2.1.1",
-    "mongodb": "*",
+    "mongodb": "~2.0.0",
     "monk": "*",
     "socket.io": "~1.1.0"
   }

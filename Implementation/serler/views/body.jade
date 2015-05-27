@@ -27,10 +27,18 @@ head
           socket.emit('toServerHi');
           });
         $("#complete_submit_practice").click(function(){
-          $.ajax({
-            type: 'POST',
-            url: 'http://localhost:30000/hello'
-          });
+        //-need to check if all the fields are completed
+          var tempId = document.getElementById("addEviId");
+          var tempWhy = document.getElementById("addEviWhy");
+          var tempWhat = document.getElementById("addEviWhat");
+          var tempWho = document.getElementById("addEviWho");
+          var tempWhen = document.getElementById("addEviWhen");
+          var tempWhere = document.getElementById("addEviWhere");
+          var tempHow = document.getElementById("addEviHow");
+          socket.emit('toServerInsertEntry', {id:tempId.value, why:tempWhy.value, 
+                                      what:tempWhat.value, who:tempWho.value,
+                                      when:tempWhen.value, where:tempWhere.value,
+                                      how:tempHow.value});
         });
         socket.on('toClientHi', function(data) {
           alert("said hi");
@@ -116,40 +124,40 @@ head
         #submission_details(data-role='page', style='display: none;')
           .ui-content(data-role='main')
             h2 Evidence Submission Details
-            form(id='addEvidenceForm', method="post")
+            form(id='addEvidenceForm' action="javascript:void(0);")
               div.input
                 label Practice name identifier
                 br
-                input(type='text', size='50', placeholder='You must specify the correct practice identifier')
+                input(id ='addEviId', type='text', size='50', placeholder='You must specify the correct practice identifier')
               div.input
                 label Why practice used
                 br
-                textarea#resp( name="resp", rows="6", cols="66" required)
+                textarea(id ='addEviWhy', name="resp", rows="6", cols="66" required)
                 | #{respStr}
               div.input
                 label Who used practice
                 br
-                textarea#resp( name="resp", rows="2", cols="30" required)
+                textarea( id ='addEviWho', name="resp", rows="2", cols="30" required)
                 | #{respStr}
               div.input
                 label What were used in the practice
                 br
-                textarea#resp( name="resp", rows="6", cols="60" required)
+                textarea( id ='addEviWhat', name="resp", rows="6", cols="60" required)
                 | #{respStr}
               div.input
                 label Where the practice was used
                 br
-                textarea#resp( name="resp", rows="6", cols="60" required)
+                textarea( id ='addEviWhere', name="resp", rows="6", cols="60" required)
                 | #{respStr}
               div.input
                 label When the practice was used
                 br
-                textarea#resp( name="resp", rows="6", cols="60" required)
+                textarea( id ='addEviWhen', name="resp", rows="6", cols="60" required)
                 | #{respStr}
               div.input
                 label How the practice was used
                 br
-                textarea#resp( name="resp", rows="6", cols="60" required)
+                textarea( id ='addEviHow', name="resp", rows="6", cols="60" required)
                 | #{respStr}
               div.input
                 input#complete_submit_practice(type='submit', value='Submit ')

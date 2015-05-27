@@ -21,12 +21,26 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+// mongo db -start-
+var mongo = require('mongodb');
+// monk is used for connecting mongodb
+var monk = require('monk');
+// replace localhost with url if db running in a different place
+var db = monk('localhost/db/serlerdb, 127.0.0.1');
+if(!db){
+  console.log("DB connection failure");
+}
+console.log("DB connected");
+
 // socket.io
 var io = require('socket.io')(server);
 io.on('connection', function(socket){
-  socket.emit('hello',{hello: 'world'});
   socket.on('toServerHi',function(data){
     io.sockets.emit('toClientHi')
+  });
+  socket.on('toServerInsertEntry', function(data){
+    console.log(data);
+    var collection = db.get("articles");
   });
 });
 
@@ -45,11 +59,7 @@ console.log("web server is listening for connections on " + port);
 // socket.io for listening events
 
 io.on('connection', function (socket) {
-  console.log("running");
   socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
 });
 
 /**
