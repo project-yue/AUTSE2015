@@ -7,7 +7,7 @@
 <body>
 <?php
 	// sql info or use include 'file.inc'
-       require_once('sql_info.php');
+       require_once('php_database/sql_info.php');
 	
 	// The @ operator suppresses the display of any error messages
 	// mysqli_connect returns false if connection failed, otherwise a connection value
@@ -27,11 +27,11 @@
 		
 		// Get data from the form
 		$user	= $_POST["teachername"];
-		$password	= $_POST["teachpass"];
+		$password	= $_POST["teacherpass"];
 
 		// Set up the SQL command to add the data into the table
 		$query = "insert into $sql_tble"
-						."(teachername, teachpass)"
+						."(teachername, teacherpass)"
 					." values "
 						."('$user','$password')";
 echo $query;
