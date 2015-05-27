@@ -4,10 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
 // mongo db -start-
 var mongo = require('mongodb');
+// monk is used for connecting mongodb
 var monk = require('monk');
-var db = monk('localhost:30010/serlerdb');
+// replace localhost with url if db running in a different place
+var db = monk('localhost:27017/serlerdb');
 
 // mongo db -end-
 
@@ -32,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req,res,next){
   req.db = db;
   next();
-  console.log("mongo db is ready at port:30010.")
+  console.log("mongo db is ready at port:27017.")
 });
 
 app.use('/', routes);
@@ -69,10 +72,13 @@ app.use(function(err, req, res, next) {
   });
 });
 
+app.post('/hello', function(req, res){
+  alert("hi from express");
+});
+
 // db functions
 /* POST to Add User Service */
 app.post('/', function(req, res) {
-
   // Set our internal DB variable
   var db = req.db;
 

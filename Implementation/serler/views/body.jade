@@ -10,7 +10,9 @@ head
     script(language='JavaScript', type='text/javascript', src='javascripts/jquery.slidepanel.setup.js')
     script(language='JavaScript', type='text/javascript', src='javascripts/jquery.ui.min.js')
     script(language='JavaScript', type='text/javascript', src='javascripts/jquery.tabs.setup.js')
+    script(language='JavaScript', type='text/javascript', src='/socket.io/socket.io.js')
     script.
+      var socket = io.connect('/');
       $(document).ready(function(){
         $("#paper_submission_btn").click(function(){
           var submitEvidenceBtnText = document.getElementById("paper_submission_btn");
@@ -22,11 +24,17 @@ head
           $("#submission_details").toggle();
           });
         $("#start_search_btn").click(function(){
-          $("#searchresult").show();
+          socket.emit('toServerHi');
           });
         $("#complete_submit_practice").click(function(){
-          
+          $.ajax({
+            type: 'POST',
+            url: 'http://localhost:30000/hello'
           });
+        });
+        socket.on('toClientHi', function(data) {
+          alert("said hi");
+        });
       });
   body
     .wrapper.col0
@@ -40,7 +48,7 @@ head
           .topbox
             h2 Researcher/Practioner Login
             |         
-            form(action='/', method='post')
+            form(action='#', method='post')
               fieldset
                 legend Teachers Login Form
                 |             
@@ -100,13 +108,15 @@ head
             input(type='text', size='50', placeholder='Please type in the request')
             |         
             input#start_search_btn(type='button', value='Search')
+            //- |
+            //- script.
             |         
             input#paper_submission_btn(type='button', value='Append Evidence')
         |       
         #submission_details(data-role='page', style='display: none;')
           .ui-content(data-role='main')
             h2 Evidence Submission Details
-            form(name="add-estimation", method="post")
+            form(id='addEvidenceForm', method="post")
               div.input
                 label Practice name identifier
                 br
