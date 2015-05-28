@@ -44,6 +44,7 @@ io.on('connection', function(socket){
     var serlerCollection = db.get("serler");
     serlerCollection.insert(data);
     console.log(data);
+    socket.emit('toClientReload');
   });
 });
 
