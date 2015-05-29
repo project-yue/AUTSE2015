@@ -36,11 +36,15 @@ console.log("DB connected");
 var io = require('socket.io')(server);
 io.on('connection', function(socket){
   socket.on('toServerHi',function(data){
-    io.sockets.emit('toClientHi')
+
   });
   socket.on('toServerInsertEntry', function(data){
+    // id, why, what, who, when, where, how
+    // monk way of get
+    var serlerCollection = db.get("serler");
+    serlerCollection.insert(data);
     console.log(data);
-    var collection = db.get("articles");
+    socket.emit('toClientReload');
   });
 });
 

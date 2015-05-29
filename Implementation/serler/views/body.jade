@@ -29,19 +29,23 @@ head
         $("#complete_submit_practice").click(function(){
         //-need to check if all the fields are completed
           var tempId = document.getElementById("addEviId");
+          var tempPrac = document.getElementById("addPractice");
+          var tempDesc = document.getElementById("addDescription");
           var tempWhy = document.getElementById("addEviWhy");
           var tempWhat = document.getElementById("addEviWhat");
           var tempWho = document.getElementById("addEviWho");
           var tempWhen = document.getElementById("addEviWhen");
           var tempWhere = document.getElementById("addEviWhere");
           var tempHow = document.getElementById("addEviHow");
-          socket.emit('toServerInsertEntry', {id:tempId.value, why:tempWhy.value, 
+          socket.emit('toServerInsertEntry', {id:tempId.value, prac:tempPrac.value,
+                                      desc:tempDesc.value, why:tempWhy.value, 
                                       what:tempWhat.value, who:tempWho.value,
                                       when:tempWhen.value, where:tempWhere.value,
                                       how:tempHow.value});
         });
-        socket.on('toClientHi', function(data) {
-          alert("said hi");
+        socket.on('toClientReload', function(data) {
+          alert("entry entered");
+          location.reload();
         });
       });
   body
@@ -129,6 +133,17 @@ head
                 label Practice name identifier
                 br
                 input(id ='addEviId', type='text', size='50', placeholder='You must specify the correct practice identifier')
+                | #{respStr}
+              div.input
+                label Practice name Practice
+                br
+                textarea(id ='addPractice',name="resp", rows="6", cols="66", required)
+                | #{respStr}
+              div.input
+                label Practice name Description
+                br
+                textarea(id ='addDescription', name="resp", rows="6", cols="66", required)
+                | #{respStr}
               div.input
                 label Why practice used
                 br
