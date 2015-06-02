@@ -32,6 +32,8 @@ if(!db){
 }
 console.log("DB connected");
 
+var serlerdb = db.get("serler");
+// var collection = db.createCollection("articles", { size: 2147483648 } );
 // socket.io
 var io = require('socket.io')(server);
 io.on('connection', function(socket){
@@ -41,10 +43,13 @@ io.on('connection', function(socket){
   socket.on('toServerInsertEntry', function(data){
     // id, why, what, who, when, where, how
     // monk way of get
-    var serlerCollection = db.get("serler");
-    serlerCollection.insert(data);
+    serlerdb.insert(data);
+    // collection.insert(data);
     console.log(data);
     socket.emit('toClientReload');
+  });
+  socket.on('toServerSearchIdentifier', function (data){
+    console.log(serlerdb.find(data));
   });
 });
 

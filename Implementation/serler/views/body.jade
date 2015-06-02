@@ -43,8 +43,19 @@ head
                                       when:tempWhen.value, where:tempWhere.value,
                                       how:tempHow.value});
         });
+        
+        $("#start_search_btn").click(function(){
+          var identifier = document.getElementById("searchIdentifier").value;
+          alert("You are search for identifier as: " + identifier);
+          socket.emit('toServerSearchIdentifier', {id:identifier});
+        });
+        
+        socket.on('toClientSearchResponse', function(data){
+          alert(data.id, data.prac);
+        });
+        
         socket.on('toClientReload', function(data) {
-          alert("entry entered");
+          alert("entry entered, you can search article identifier for retrieving information");
           location.reload();
         });
       });
@@ -101,7 +112,7 @@ head
       #header
         #logo
           h1
-            a(href='index.html') SERLER
+            a(href='#body.jade') SERLER
           |       
           p Software Engineering Research Laboratory Evidence Repository
         |     
@@ -117,7 +128,7 @@ head
         |     
         form(action='#', method='post')
           fieldset
-            input(type='text', size='50', placeholder='Please type in the request')
+            input#searchIdentifier(type='text', size='50', placeholder='Please type in the request')
             |         
             input#start_search_btn(type='button', value='Search')
             //- |
