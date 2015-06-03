@@ -1,3 +1,5 @@
 Implementation/serler/db/serlerdb/*
 Implementation/serler/node_modules
 Implementation/npm-debug.log
+node_modules
+serlerdb
