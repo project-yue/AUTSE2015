@@ -146,7 +146,7 @@ head
         .fl_right
           ul
             li
-              a(href='online_support.html') Online Support
+              a(href='#') Support
         |     
         br.clear
     .wrapper.col3
@@ -219,8 +219,8 @@ head
                     option(value='waterfall') Waterfall
                   br
               h2 Practice Being Investigated
+                br
                 span.input
-                  //- form(action='')
                   input(type='checkbox', id='prac_tdd', value='Test Driven Development')
                   |TDD
                   input(type='checkbox', id='prac_ci', value='Continuous Integration')
@@ -283,6 +283,7 @@ head
                 br
                 label Research Method
                 //- form(action='')
+                span.input
                   input(type='checkbox', id='researchSurvey', value='Survey')
                   |Survey
                   input(type='checkbox', id='researchInterview', value='Interview')
@@ -297,6 +298,7 @@ head
                 br
                 label Nature of Participant
                 //- form(action='')
+                span.input
                   input(type='checkbox', id='par_novice', value='Novice')
                   |Novice
                   input(type='checkbox', id='par_intermediate', value='Intermediate')
@@ -308,7 +310,6 @@ head
                 br
               input#complete_submit_practice(type='submit', value='Submit')
               div.input
-          | References
     #searchresult.wrapper.col3(style='display: none;')
       #container
         iframe(src='pages/index.html', width='100%', height='600')
