@@ -46,8 +46,8 @@ head
         
         $("#start_search_btn").click(function(){
           var identifier = document.getElementById("searchIdentifier").value;
-          alert("You are search for identifier as: " + identifier);
-          socket.emit('toServerSearchIdentifier', {id:identifier});
+          alert("The searching function has not been implemented yet");
+          //- socket.emit('toServerSearchIdentifier', {id:identifier});
         });
         
         socket.on('toClientSearchResponse', function(data){
@@ -55,7 +55,7 @@ head
         });
         
         socket.on('toClientReload', function(data) {
-          alert("entry entered, you can search article identifier for retrieving information");
+          alert("entry entered");
           location.reload();
         });
       });
@@ -134,12 +134,82 @@ head
             //- |
             //- script.
             |         
-            input#paper_submission_btn(type='button', value='Append Evidence')
+            input#paper_submission_btn(type='button', value='Insert New Article Properties')
         |       
         #submission_details(data-role='page', style='display: none;')
           .ui-content(data-role='main')
-            h2 Evidence Submission Details
             form(id='addEvidenceForm' action="javascript:void(0);")
+              div
+                h3 Information about article
+                br
+                h5 Bibliographic info
+                span.input
+                  label Title
+                  &ensp;
+                  input(id = 'addBiblioTitle', type='text', size='50', placeholder='Title')
+                br
+                span.input
+                  label Authors
+                  &ensp;
+                  input(id = 'addBiblioAuthors', type='text', size='50', placeholder='Authors')
+                br
+                span.input
+                  label Journal
+                  &ensp;
+                  input(id = 'addBiblioJournal', type='text', size='50', placeholder='Journal')
+                br
+                span.input
+                  label Year
+                  &ensp;
+                  input(id = 'addBiblioYear', type='text', size='50', placeholder='Year')
+                br
+                h5 Credibility info
+                span.input
+                  label Rating
+                  &ensp;
+                  form(action='')
+                    select(id = 'addRating')
+                      option(value='1') 1
+                      option(value='2') 2
+                      option(value='3') 3
+                      option(value='4') 4
+                      option(value='5') 5
+                br
+                span.input
+                  label Research Level
+                  &ensp;
+                  form(action='')
+                    select(id = 'addResearchLevel')
+                      option(value='1') Level 1
+                      option(value='2') Level 2
+                      option(value='3') Level 3
+                      option(value='4') Level 4
+                      option(value='5') Level 5
+              br
+              h2 Software Methodology Used
+                span.input
+                  form(action='')
+                    select(id = 'addMethodology')
+                      option(value='scrum') Scrum
+                      option(value='xp') XP
+                      option(value='kanban') Kanban
+                      option(value='waterfall') Waterfall
+                  br
+              h2 Practice Being Investigated
+                span.input
+                  form(action='')
+                    input(type='checkbox', id='prac_tdd', value='Test Driven Development')
+                    |TDD
+                    input(type='checkbox', id='prac_ci', value='Continuous Integration')
+                    |Continuous Integration
+                    input(type='checkbox', id='prac_bdd', value='Behavior Driven Development')
+                    |Behavior Driven Development
+                    input(type='checkbox', id='prac_pp', value='Planning Poker')
+                    |Planning Poker
+                    input(type='checkbox', id='prac_sm', value='Standup Meeting')
+                    |Standup Meeting
+                  br
+              h2 Evidence Submission Details
               div.input
                 label Practice name identifier
                 br
@@ -185,6 +255,39 @@ head
                 br
                 textarea( id ='addEviHow', name="resp", rows="6", cols="60" required)
                 | #{respStr}
+              br
+              h2 Information about the Research Design
+              div.input
+                label Research Question
+                br
+                textarea( id ='addResearchQuestion', name="resp", rows="6", cols="60" required)
+                | #{respStr}
+                br
+                label Research Method
+                form(action='')
+                  input(type='checkbox', id='researchSurvey', value='Survey')
+                  |Survey
+                  input(type='checkbox', id='researchInterview', value='Interview')
+                  |Interview
+                  input(type='checkbox', id='researchExperiment', value='Experiment')
+                  |Experiment
+                br
+                label Research Metrics used
+                br
+                textarea( id ='addResearchMetrics', name="resp", rows="6", cols="60" required)
+                | #{respStr}
+                br
+                label Nature of Participant
+                form(action='')
+                  input(type='checkbox', id='par_novice', value='Novice')
+                  |Novice
+                  input(type='checkbox', id='par_intermediate', value='Intermediate')
+                  |Intermediate
+                  input(type='checkbox', id='par_senior', value='Senior')
+                  |Senior
+                  input(type='checkbox', id='par_expert', value='Expert')
+                  |Expert
+                br
               div.input
                 input#complete_submit_practice(type='submit', value='Submit ')
           | References
