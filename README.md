@@ -6,3 +6,8 @@ RULES:
 
 Add or commit to your own branch, and then merge to master when the code is validated.
 
+In Sprint 1, team generated static web pages.
+
+In Sprint 2, team worked on insertion functions.
+
+In Sprint 3, team improved insertion functions.
