@@ -4,16 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-// // mongo db -start-
-// var mongo = require('mongodb');
-// // monk is used for connecting mongodb
-// var monk = require('monk');
-// // replace localhost with url if db running in a different place
-// var db = monk('localhost:27017/serlerdb');
-
-// mongo db -end-
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
