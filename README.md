@@ -4,5 +4,5 @@ AUTSE2015 for the assignment1b Software Engineering
 
 RULES:
 
-Add or commit to your own branch
+Add or commit to your own branch, and then merge to master when the code is validated.
 
